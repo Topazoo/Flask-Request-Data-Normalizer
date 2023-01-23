@@ -5,6 +5,13 @@ from flask import Flask
 METHODS = ['get', 'post', 'put', 'patch', 'options', 'delete']
 BASE_URL = "/"
 
+class QueryURLtoResultMapping:
+    """ Mapping of a URL with query params to a result """
+
+    def __init__(self, url_params:str, result:dict) -> None:
+        self.url = f"{BASE_URL}?{url_params}"
+        self.result = result
+
 def call_wrapper(app:Flask, validator:Callable, url:str=BASE_URL, body:dict={}, methods:list=METHODS):
     """
         Wrapper to automate testing of multiple Flask methods for expected functionality.
@@ -28,7 +35,10 @@ def call_wrapper(app:Flask, validator:Callable, url:str=BASE_URL, body:dict={}, 
     with app.test_client() as c:
         # For each specified method
         for method in methods:
+            print(f"Calling [{method.upper()}] {url} with body: {body}: ", end='')
             # Call the method at the specified url with the passed body
             rv = getattr(c, method)(url, json=body)
             # Call the validator with the method and result to run assertions on the Request/Response
             validator(method, rv)
+            
+            print("ok!")
