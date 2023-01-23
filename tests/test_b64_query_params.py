@@ -27,7 +27,7 @@ class TestBase64QueryParams(unittest.TestCase):
         Test requests with one base64 encoded key/value pair in the query string
         """
 
-        validate = QueryURLtoResultMapping("?q=IkhlbGxvIg==", {"q": "Hello"})
+        validate = QueryURLtoResultMapping("q=IkhlbGxvIg==", {"q": "Hello"})
 
         # Validations to run on each call
         def validator(_, __):
@@ -44,7 +44,7 @@ class TestBase64QueryParams(unittest.TestCase):
         Test requests with complex base64 encoded key/value pairs in the query string
         """
 
-        validate = QueryURLtoResultMapping("?data=eyJuZXN0ZWQiOnsiYSI6ImEiLCJiIjoiYiJ9LCJsaXN0IjpbMSx7ImluIjoibGlzdCJ9LHRydWVdfQ==", {
+        validate = QueryURLtoResultMapping("data=eyJuZXN0ZWQiOnsiYSI6ImEiLCJiIjoiYiJ9LCJsaXN0IjpbMSx7ImluIjoibGlzdCJ9LHRydWVdfQ==", {
             'data': {
                 'nested': {
                     'a': 'a', 'b': 'b'
@@ -68,7 +68,7 @@ class TestBase64QueryParams(unittest.TestCase):
         Test requests with mixed base64 encoded and regular key/value pairs in the query string
         """
 
-        validate = QueryURLtoResultMapping("?hello%20world=eyJ0ZXN0IjogeyJuZXN0ZWQiOiAxfSwgInRlc3QyIjogW3siaGkiOiAiVGhlcmUifV0sICJ0ZXN0MyI6IDMuMTR9", {
+        validate = QueryURLtoResultMapping("hello%20world=eyJ0ZXN0IjogeyJuZXN0ZWQiOiAxfSwgInRlc3QyIjogW3siaGkiOiAiVGhlcmUifV0sICJ0ZXN0MyI6IDMuMTR9", {
             "hello world": {
                 "test": {
                     "nested": 1
