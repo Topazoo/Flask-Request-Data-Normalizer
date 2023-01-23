@@ -26,7 +26,7 @@ RequestDataNormalizer(app)
 
 In Flask, parameters passed in a URL query string (such as `test`/`val` in `localhost/?test=val`) are accessed in Dictionary form via the `Request.args` or `Request.values` properties but not the `Request.get_json()` method.
 
-This extension adds these parsed query parameters to the results of `Request.get_json()` making the method a one-stop-shop to retrieve <i>any</i> data passed to an endpoint.
+This extension adds these parsed query parameters to the results of `Request.get_json()` making the method a one-stop-shop to retrieve _any_ data passed to an endpoint.
 
 Additionally, this extension provides support for parsing base64 encoded query parameters. This allows complex objects to be encoded in query parameters and automatically parsed by Flask!
 
@@ -43,7 +43,7 @@ var obj = {nested: {a: 'a', b: 'b'}, list: [1, {"in": "list"}, true]};
 '?data=eyJuZXN0ZWQiOnsiYSI6ImEiLCJiIjoiYiJ9LCJsaXN0IjpbMSx7ImluIjoibGlzdCJ9LHRydWVdfQ=='
 ```
 
-With this extension, Flask will be able to parse this data into a Python object automatically. 
+With this extension, Flask will be able to parse this data into a Python object automatically.
 
 Take this sample Flask application with a single endpoint:
 
@@ -63,7 +63,7 @@ app.run(host="0.0.0.0", debug=True)
 
 If we called the above endpoint with our base64 encoded query string we would get the following Python object
 
-```python 
+```python
 {'data': {'nested': {'a': 'a', 'b': 'b'}, 'list': [1, {'in': 'list'}, True]}}
 ```
 
@@ -75,7 +75,7 @@ The parsing of base64 query strings is done by the [Query String Manager](https:
   - Unittests must be added under the `tests/` directory for the PR to be approved. You can run unittests from the root project directory with the following command:
 
     ```sh
-    $ python -m unittest discover -s tests -p test*.py
+    python -m unittest discover -s tests -p test*.py
     ```
 
   - PRs cannot be merged without all unittests passing (they will execute automatically)
