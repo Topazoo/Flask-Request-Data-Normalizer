@@ -1,5 +1,5 @@
 # typing
-from src.flask_request_data_normalizer.NormalizedRequest import NormalizedRequest
+from .NormalizedRequest import NormalizedRequest
 
 class RequestDataNormalizer:
     """ [Request Data Normalizer Flask Extension](https://github.com/Topazoo/Flask-Request-Data-Normalizer)
