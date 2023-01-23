@@ -49,7 +49,7 @@ Take this sample Flask application with a single endpoint:
 
 ```python
 from flask_request_data_normalizer import RequestDataNormalizer
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 RequestDataNormalizer(app)
@@ -71,11 +71,11 @@ The parsing of base64 query strings is done by the [Query String Manager](https:
 
 ## Contributing
 
-- Contributions are welcome! Please not the following when contributing:
+Contributions are welcome! Please not the following when contributing:
   - Unittests must be added under the `tests/` directory for the PR to be approved. You can run unittests from the root project directory with the following command:
 
     ```sh
-    python -m unittest discover -s tests -p test*.py
+    python setup.py test
     ```
 
   - PRs cannot be merged without all unittests passing (they will execute automatically)
