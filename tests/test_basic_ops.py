@@ -5,7 +5,7 @@ import unittest
 
 # utils
 from tests.utils import call_wrapper
-from flask import request, Response
+from flask import request
 
 class TestBasicOperations(unittest.TestCase):
     """
@@ -19,12 +19,12 @@ class TestBasicOperations(unittest.TestCase):
 
     def test_handle_request_no_params(self):
         """
-        Handle a simple requests with no query or form params.
+        Test simple requests with no query or form params.
         Ensure request args, values, and json are empty
         """
 
         # Validations to run on each call
-        def validator(_, response:Response):
+        def validator(_, __):
             assert request.args is None
             assert not request.values
             assert request.json is None
@@ -32,3 +32,47 @@ class TestBasicOperations(unittest.TestCase):
 
         # Make calls to specified URL with specified methods with optional body
         call_wrapper(self.app, validator)
+
+    def test_handle_request_body(self):
+        """
+        Test simple requests with a single body param
+        """
+
+        body = {"test": "val"}
+
+        # Validations to run on each call
+        def validator(_, __):
+            assert request.args is None
+            assert not request.values 
+            assert request.json == body
+            assert request.get_json() == body
+
+        # Make calls to specified URL with specified methods with optional body
+        call_wrapper(self.app, validator, body=body)
+
+    def test_handle_complex_request_body(self):
+        """
+        Test simple requests with a comples body params
+        """
+
+        body = {
+            "test": "val",
+            "sub": {
+                "list": [
+                    1,2,3, {
+                        "deep_obj": None
+                    }
+                ]
+            },
+            "1": False
+        }
+
+        # Validations to run on each call
+        def validator(_, __):
+            assert request.args is None
+            assert not request.values 
+            assert request.json == body
+            assert request.get_json() == body
+
+        # Make calls to specified URL with specified methods with optional body
+        call_wrapper(self.app, validator, body=body)
