@@ -3,7 +3,7 @@
 Streamline and supercharge your query string parameter parsing in Flask! This Flask extension provides support for parsing complex Python objects from base64 encoded query parameters, and makes passed query parameterss of any encoding available via Flask's `Request.get_json()`.
 
 [![Flask](https://img.shields.io/badge/Flask-2.0.3+-blue.svg)](https://pypi.org/project/Flask/)
-[![Query String Manager](https://img.shields.io/badge/Query%20String%20Manager-1.0.9+-green.svg)](https://pypi.org/project/Query-String-Manager/)
+[![Query String Manager](https://img.shields.io/badge/Query%20String%20Manager-1.0.10+-green.svg)](https://pypi.org/project/Query-String-Manager/)
 [![PyPi](https://img.shields.io/badge/View%20On-PyPi-orange.svg)](https://pypi.org/project/Flask-RDN/)
 
 ## Installation
